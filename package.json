@@ -1,7 +1,7 @@
 {
-  "name": "react_native_zxing",
-  "version": "0.0.1",
-  "private": true,
+  "name": "react-native-zxing",
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
@@ -18,5 +18,23 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "description": "Zxing Android Module for react native",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaeltakiyama/react-native-zxing.git"
+  },
+  "keywords": [
+    "react-native",
+    "zxing",
+    "android-module",
+    "module"
+  ],
+  "author": "Rafael T Akiyama <rafaeltakiyama@gmail.com> (http://rafaeltakiyama.com.br)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaeltakiyama/react-native-zxing/issues"
+  },
+  "homepage": "https://github.com/rafaeltakiyama/react-native-zxing#readme"
 }
