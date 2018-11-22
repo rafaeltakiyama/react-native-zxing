@@ -20,7 +20,7 @@
     "preset": "react-native"
   },
   "description": "Zxing Android Module for react native",
-  "main": "index.js",
+  "main": "rnzxing.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rafaeltakiyama/react-native-zxing.git"
