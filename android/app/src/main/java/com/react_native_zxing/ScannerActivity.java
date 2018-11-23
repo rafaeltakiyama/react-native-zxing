@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.facebook.react.ReactActivity;
 import com.journeyapps.barcodescanner.CaptureManager;
@@ -17,23 +18,22 @@ import java.util.Random;
 public class ScannerActivity extends ReactActivity implements DecoratedBarcodeView.TorchListener {
     private CaptureManager capture;
     private DecoratedBarcodeView barcodeScannerView;
-    private Button switchFlashlightButton;
+    private ImageButton switchFlashlightButton;
     private ViewfinderView viewfinderView;
+    private boolean isFlashOn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_scanner);
 
-        barcodeScannerView = (DecoratedBarcodeView)findViewById(R.id.zxing_barcode_scanner);
+        barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
         barcodeScannerView.setTorchListener(this);
 
-        switchFlashlightButton = (Button)findViewById(R.id.switch_flashlight);
+        switchFlashlightButton = findViewById(R.id.switch_flashlight);
 
-        viewfinderView = (ViewfinderView) findViewById(R.id.zxing_viewfinder_view);
+        ViewfinderView viewfinderView = findViewById(R.id.zxing_viewfinder_view);
 
-        // if the device does not have flashlight in its camera,
-        // then remove the switch flashlight button...
         if (!hasFlash()) {
             switchFlashlightButton.setVisibility(View.GONE);
         }
@@ -82,20 +82,22 @@ public class ScannerActivity extends ReactActivity implements DecoratedBarcodeVi
     }
 
     public void switchFlashlight(View view) {
-        if (getString(R.string.turn_on_flashlight).equals(switchFlashlightButton.getText())) {
-            barcodeScannerView.setTorchOn();
-        } else {
+        if (isFlashOn) {
             barcodeScannerView.setTorchOff();
+        } else {
+            barcodeScannerView.setTorchOn();
         }
     }
 
     @Override
     public void onTorchOn() {
-        switchFlashlightButton.setText(R.string.turn_off_flashlight);
+        switchFlashlightButton.setBackground(getResources().getDrawable(R.drawable.ic_flash_off));
+        isFlashOn = true;
     }
 
     @Override
     public void onTorchOff() {
-        switchFlashlightButton.setText(R.string.turn_on_flashlight);
+        switchFlashlightButton.setBackground(getResources().getDrawable(R.drawable.ic_flash_on));
+        isFlashOn = false;
     }
 }
