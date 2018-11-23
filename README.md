@@ -2,7 +2,7 @@
 
 The comprehensive zxing module for React Native (Android). 
 
-This module abstracts the library `zxing-android-embedded`, developed by JourneyApps
+This module abstracts the library [`zxing-android-embedded`](https://github.com/journeyapps/zxing-android-embedded), developed by [JourneyApps](https://github.com/journeyapps)
 
 Barcode formats:
 
@@ -20,7 +20,7 @@ Barcode formats:
 - DATA MATRIX
 - PDF 417
 
-![5j2jduk](https://gph.is/2BsvEAn)
+![Example](https://media.giphy.com/media/1wpxKD8tXU3eXXC8Hi/giphy.gif)
 
 ### Example import
 
