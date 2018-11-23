@@ -32,7 +32,7 @@
     "module"
   ],
   "author": "Rafael T Akiyama <rafaeltakiyama@gmail.com> (http://rafaeltakiyama.com.br)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rafaeltakiyama/react-native-zxing/issues"
   },
