@@ -38,8 +38,6 @@ const ScannerModule = NativeModules.ScannerModule;
 
 ## Usage
 
----
-
 ### openScanner()
 
 Open Default Scanner screen
@@ -52,9 +50,9 @@ ScannerModule.openScanner(isBeepEnable, prompt, this.onBarcodeRead)
 
 **Notes**
 
-> isBeepEnable : boolean 
-> prompt : String (Text to help the user)
-> onBarcodeRead : Callback function
+    *isBeepEnable* : boolean 
+    *prompt* : String (Text to help the user)
+    *onBarcodeRead* : Callback function
 
 ---
 
@@ -70,10 +68,10 @@ ScannerModule.openCustomScanner(isBeepEnable, isOrientationLocked, barcodeTypes,
 
 **Notes**
 
-> isBeepEnable : boolean 
-> isOrientationLocked : boolean 
-> barcodeTypes : Array of barcode types
-> onBarcodeRead : Callback function
+    *isBeepEnable* : boolean 
+    *isOrientationLocked* : boolean 
+    *barcodeTypes* : Array of barcode types
+    *onBarcodeRead* : Callback function
 
 ---
 
