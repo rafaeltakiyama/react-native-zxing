@@ -50,9 +50,9 @@ ScannerModule.openScanner(isBeepEnable, prompt, this.onBarcodeRead)
 
 **Notes**
 
-    *isBeepEnable* : boolean 
-    *prompt* : String (Text to help the user)
-    *onBarcodeRead* : Callback function
+    isBeepEnable : boolean 
+    prompt : String (Text to help the user) // if null, no text will be displayed
+    onBarcodeRead : Callback function
 
 ---
 
@@ -68,10 +68,10 @@ ScannerModule.openCustomScanner(isBeepEnable, isOrientationLocked, barcodeTypes,
 
 **Notes**
 
-    *isBeepEnable* : boolean 
-    *isOrientationLocked* : boolean 
-    *barcodeTypes* : Array of barcode types
-    *onBarcodeRead* : Callback function
+    isBeepEnable : boolean 
+    isOrientationLocked : boolean 
+    barcodeTypes : Array of barcode types
+    onBarcodeRead : Callback function
 
 ---
 
