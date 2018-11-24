@@ -37,7 +37,7 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
 
     @ReactMethod
     void openScanner(boolean isBeepEnable,
-                     String prompt
+                     String prompt,
                      Callback callback) {
         mCallback = callback;
         Activity activity = getCurrentActivity();
