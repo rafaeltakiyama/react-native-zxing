@@ -38,17 +38,57 @@ const ScannerModule = NativeModules.ScannerModule;
 
 ## Usage
 
+---
+
+### openScanner()
+
+Open Default Scanner screen
+
+**Examples**
+
+```js
+ScannerModule.openScanner(isBeepEnable, prompt, this.onBarcodeRead)
+```
+
+**Notes**
+
+> isBeepEnable : boolean 
+> prompt : String (Text to help the user)
+> onBarcodeRead : Callback function
+
+---
+
+### openCustomScanner()
+
+Open Custom Scanner screen
+
+**Examples**
+
+```js
+ScannerModule.openCustomScanner(isBeepEnable, isOrientationLocked, barcodeTypes, this.onBarcodeRead)
+```
+
+**Notes**
+
+> isBeepEnable : boolean 
+> isOrientationLocked : boolean 
+> barcodeTypes : Array of barcode types
+> onBarcodeRead : Callback function
+
+---
+
+### Example
+
 ```javascript
-// boolean isBeepEnable
-// boolean isOrientationLocked
-// ReadableArray barcodeTypes (If you want all barcode types, pass null)
-// Callback callback 
+import { NativeModules } from 'react-native';
+
+const ScannerModule = NativeModules.ScannerModule;
 
 onBarcodeRead = (barcode) => {
     //do something with barcode value
 }
 
-var barcodeTypes [
+var barcodeTypes = [
     'QR_CODE', 
     'DATA_MATRIX', 
     'UPC_A', 
@@ -65,11 +105,11 @@ var barcodeTypes [
     'DATA_MATRIX',
     'PDF_417'
 ]
-ScannerModule.openScanner(true, true, barcodeTypes, this.onBarcodeRead)
+
+ScannerModule.openCustomScanner(true, true, barcodeTypes, this.onBarcodeRead)
 ``` 
 
-
-------------
+---
 
 Thanks to JourneyApps for the `zxing-android-embedded` library which I used to access Zxing library.
 

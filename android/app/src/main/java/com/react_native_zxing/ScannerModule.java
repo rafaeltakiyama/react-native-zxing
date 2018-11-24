@@ -37,6 +37,21 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
 
     @ReactMethod
     void openScanner(boolean isBeepEnable,
+                     String prompt
+                     Callback callback) {
+        mCallback = callback;
+        Activity activity = getCurrentActivity();
+
+        if (activity != null) {
+            new IntentIntegrator(activity)
+                    .setPrompt(prompt == null ? "" : prompt)
+                    .setBeepEnabled(isBeepEnable)
+                    .initiateScan();
+        }
+    }
+
+    @ReactMethod
+    void openCustomScanner(boolean isBeepEnable,
                      boolean isOrientationLocked,
                      ReadableArray barcodeTypes,
                      Callback callback) {
