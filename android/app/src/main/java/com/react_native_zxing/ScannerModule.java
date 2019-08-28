@@ -71,6 +71,26 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
         }
     }
 
+    @ReactMethod
+    void openScannerWithPhoto(boolean isBeepEnable,
+                     String prompt,
+                     ReadableArray barcodeTypes,
+                     Callback callback) {
+        mCallback = callback;
+        Activity activity = getCurrentActivity();
+        List<String> types = getBarcodesTypes(barcodeTypes);
+
+        if (activity != null) {
+            new IntentIntegrator(activity)
+                    .setPrompt(prompt == null ? "" : prompt)
+                    .setBeepEnabled(isBeepEnable)
+                    .setDesiredBarcodeFormats(types)
+                    .setBarcodeImageEnabled(true)
+                    .initiateScan();
+        }
+    }
+
+    
     private List<String> getBarcodesTypes(ReadableArray barcodeTypes) {
         if (barcodeTypes == null) {
             return null;
@@ -89,7 +109,7 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
-        mCallback.invoke(result.getContents());
+        mCallback.invoke(result.getContents(), result.getBarcodeImagePath());
     }
 
     @Override
