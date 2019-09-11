@@ -27,7 +27,6 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
     public ScannerModule(ReactApplicationContext reactContext) {
         super(reactContext);
         mReactContext = reactContext;
-        mReactContext.addActivityEventListener(this);
     }
 
     @Override
@@ -47,6 +46,7 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
                     .setPrompt(prompt == null ? "" : prompt)
                     .setBeepEnabled(isBeepEnable)
                     .initiateScan();
+            mReactContext.addActivityEventListener(this);
         }
     }
 
@@ -68,6 +68,7 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
                     .setOrientationLocked(isOrientationLocked)
                     .setCaptureActivity(ScannerActivity.class)
                     .initiateScan();
+            mReactContext.addActivityEventListener(this);
         }
     }
 
@@ -87,6 +88,7 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
                     .setDesiredBarcodeFormats(types)
                     .setBarcodeImageEnabled(true)
                     .initiateScan();
+            mReactContext.addActivityEventListener(this);
         }
     }
 
@@ -110,6 +112,9 @@ public class ScannerModule extends ReactContextBaseJavaModule implements Activit
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
         mCallback.invoke(result.getContents(), result.getBarcodeImagePath());
+        
+        // Remove the listener since we are removing this activity.
+        mReactContext.removeActivityEventListener(this);
     }
 
     @Override
